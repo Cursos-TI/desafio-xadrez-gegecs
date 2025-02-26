@@ -1,50 +1,54 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+// Função para a movimentação da dama.
+void dama(int damaMov) {
+    if(damaMov > 0) {
+        printf("Esquerda\n");
+        dama(damaMov - 1);
+    }
+}
+// Função para a movimentação da torre
+void torre(int torreMov) {
+    if(torreMov > 0) {
+        printf("Direita\n");
+        torre(torreMov - 1);
+    }
+}
+
+// Função com loop aninhado para a movimentação do bispo.
+void bispo(int bispoMov) {
+    for(bispoMov = 5; bispoMov > 0; bispoMov--) {
+        printf("Cima - ");
+        for(int i = 1; i == 1; i++){
+            printf("Direita\n");
+        }
+    }
+}
 
 int main() {
-    // Declaração da variável para a repetição.
-    int i = 1;
-    // Variáveis para a movimentação do cavalo.
-    int cavaloMov, j = 1;
-
+    // Impressão da movimentação do bispo.
     printf("Bispo:\n");
-    // while para imprimir a movimentação do bispo 5 vezes.
-    while (i <= 5) {
-        printf("Cima - Direita\n");
-        i++;
-    }
+    bispo(5);
 
+    // Impressão da movimentação da torre.
     printf("\nTorre:\n");
-    // for para imprimir a movimentação da torre 5 vezes, o i está recebendo o valor de 1 para reiniciar a contagem
-    for(i = 1; i <= 5; i++) {
-        printf("Direita\n");
-    }
+    torre(5);
 
+    // Impressão da movimentação da dama.
     printf("\nDama:\n");
-    // i novamente recebendo o valor de 1 para reiniciar a contagem;
-    i = 1;
-    // do-while para imprimir a movimentação da dama 8 vezes.
-    do {
-        printf("Esquerda\n");
-        i++;
-    } while (i <= 8);
+    dama(8);
+
+    // Variáveis para a movimentação do cavalo.
+    int cavaloMov, j;
 
     //Divisão das peças para o cavalo
     printf("---------------------------------------\n");
+    // Movimentação do cavalo com loop complexo
     printf("Cavalo:\n");
-
-    for(cavaloMov = 1; cavaloMov == 1; cavaloMov++) {
-        // While para imprimir "Baixo" 2 vezes
-        while(j <= 2) {
-            printf("Baixo - ");
-            j++;
-        }
-        // printf para imprimir "Esquerda" após a finalização do loop while
-        printf("Esquerda\n");
+    for(cavaloMov = 1, j = 1; cavaloMov <= 2  && j <= 2; cavaloMov++, j++) {
+        printf("Cima - ");
     }
+    printf("Direita\n");
 
     return 0;
 }
